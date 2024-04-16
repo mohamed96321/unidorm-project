@@ -2,19 +2,18 @@ export class Footer {
   constructor() {}
 
   render() {
+    // Footer Container
     const footer = document.createElement('footer');
-    footer.classList.add('bg-gray-800', 'text-white', 'py-8');
+    footer.classList.add('bg-gray-800', 'text-white', 'py-8', 'px-4');
 
+    // Container for all content
     const container = document.createElement('div');
-    container.classList.add('container', 'mx-auto', 'flex', 'flex-col', 'md:flex-row', 'justify-between', 'items-center');
+    container.classList.add('container', 'mx-auto', 'flex', 'flex-col', 'md:flex-row', 'justify-between', 'items-start');
 
-    // Left Content (Logo and Subscribe)
-    const leftContent = document.createElement('div');
-    leftContent.classList.add('flex', 'flex-col', 'md:flex-row', 'items-start', 'space-y-4', 'md:space-y-0', 'md:space-x-2', 'mb-4'); // Changed items-center to items-start
 
     // Logo Container
     const logoContainer = document.createElement('div');
-    logoContainer.classList.add('flex', 'items-center', 'space-x-2');
+    logoContainer.classList.add('flex', 'items-center', 'mb-4');
 
     const logoImg = document.createElement('img');
     logoImg.src = './assets/img/logo.png';
@@ -28,15 +27,13 @@ export class Footer {
     logoContainer.appendChild(logoImg);
     logoContainer.appendChild(logoText);
 
-    leftContent.appendChild(logoContainer);
-
     // Subscribe Container
     const subscribeContainer = document.createElement('div');
-    subscribeContainer.classList.add('flex', 'flex-col', 'items-start', 'space-y-2' );
+    subscribeContainer.classList.add('flex', 'flex-col', 'items-start', 'mb-4', 'text-start');
 
-    const subscribeTitle = document.createElement('h4'); 
+    const subscribeTitle = document.createElement('h4');
     subscribeTitle.textContent = 'Subscribe';
-    subscribeTitle.classList.add('font-bold', 'text-white', 'mb-1', 'md:mt-8');
+    subscribeTitle.classList.add('font-bold', 'text-white', 'mb-1', 'md:mt-10');
 
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('relative', 'flex', 'items-center', 'space-x-2');
@@ -47,44 +44,48 @@ export class Footer {
     emailInput.classList.add('bg-gray-700', 'text-white', 'py-2', 'px-3', 'rounded', 'focus:outline-none', 'focus:ring', 'focus:border-blue-300');
 
     const sendIcon = document.createElement('i');
-    sendIcon.classList.add('absolute', 'right-0', 'mr-2', 'bx', 'bxs-send', 'text-blue-400', 'cursor-pointer'); // Absolute positioning for the icon
+    sendIcon.classList.add('absolute', 'right-0', 'mr-2', 'bx', 'bxs-send', 'text-blue-400', 'cursor-pointer');
 
     inputContainer.appendChild(emailInput);
     inputContainer.appendChild(sendIcon);
 
-    subscribeContainer.appendChild(subscribeTitle); 
+    subscribeContainer.appendChild(subscribeTitle);
     subscribeContainer.appendChild(inputContainer);
 
-    leftContent.appendChild(subscribeContainer);
-
-    // Right Content (Links and Socials)
-    const rightContent = document.createElement('div');
-    rightContent.classList.add('flex', 'flex-col', 'md:flex-row', 'space-y-4', 'md:space-y-0', 'md:space-x-4');
+    // Links Container
+    const linksContainer = document.createElement('div');
+    linksContainer.classList.add('flex', 'flex-col', 'md:flex-row', 'space-y-4', 'md:space-y-0', 'md:space-x-6');
 
     const supportLinks = createFooterLinks('Support', ['Help Center', 'FAQ', 'Terms of Service ']);
     const accountLinks = createFooterLinks('Account', ['Profile ', 'Settings ', 'Billing ']);
     const aboutLinks = createFooterLinks('About UniDorm', ['Our Team', 'Mission', 'Privacy Policy ']);
-    rightContent.appendChild(supportLinks);
-    rightContent.appendChild(aboutLinks);
-    rightContent.appendChild(accountLinks);
 
-    const socialLinks = document.createElement('div');
-    socialLinks.classList.add('block', 'space-x-4');
+    linksContainer.appendChild(supportLinks);
+    linksContainer.appendChild(aboutLinks);
+    linksContainer.appendChild(accountLinks);
 
+    // Social Links Container
+    const socialLinksContainer = document.createElement('div');
+    socialLinksContainer.classList.add('flex', 'items-center', 'space-x-4', 'md:flex-col');
+
+    // Social Links
     const facebookLink = createSocialLink('bx bxl-facebook');
     const twitterLink = createSocialLink('bx bxl-twitter');
     const instagramLink = createSocialLink('bx bxl-instagram');
     const linkedinLink = createSocialLink('bx bxl-linkedin');
 
-    socialLinks.appendChild(facebookLink);
-    socialLinks.appendChild(twitterLink);
-    socialLinks.appendChild(instagramLink);
-    socialLinks.appendChild(linkedinLink);
+    socialLinksContainer.appendChild(facebookLink);
+    socialLinksContainer.appendChild(twitterLink);
+    socialLinksContainer.appendChild(instagramLink);
+    socialLinksContainer.appendChild(linkedinLink);
 
-    rightContent.appendChild(socialLinks);
+    // Append elements to container
+    container.appendChild(logoContainer);
+    container.appendChild(subscribeContainer);
+    container.appendChild(linksContainer);
+    container.appendChild(socialLinksContainer);
 
-    container.appendChild(leftContent);
-    container.appendChild(rightContent);
+    // Append container to footer
     footer.appendChild(container);
 
     return footer;
@@ -96,7 +97,7 @@ function createFooterLinks(title, links) {
   linkContainer.classList.add('mb-4');
 
   const titleElement = document.createElement('h4');
-  titleElement.classList.add('font-bold');
+  titleElement.classList.add('font-bold', 'text-white', 'mb-2');
   titleElement.textContent = title;
 
   linkContainer.appendChild(titleElement);
@@ -105,6 +106,7 @@ function createFooterLinks(title, links) {
     const link = document.createElement('a');
     link.href = '#';
     link.textContent = linkText;
+    link.classList.add('text-blue-400', 'hover:text-blue-200', 'transition', 'duration-300');
     linkContainer.appendChild(link);
   });
 
@@ -117,7 +119,6 @@ function createSocialLink(iconClass) {
   link.classList.add('text-white');
 
   const icon = document.createElement('i');
-  // Split the icon class name and remove any spaces
   const classes = iconClass.split(' ').filter(className => className.trim() !== '');
   icon.classList.add(...classes);
 

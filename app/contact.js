@@ -3,7 +3,7 @@ export class ContactSection {
 
   render() {
     const contactSection = document.createElement('section');
-    contactSection.classList.add('py-16');
+    contactSection.classList.add('py-12');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');
@@ -13,7 +13,7 @@ export class ContactSection {
     title.textContent = 'Contact Us';
 
     const contactForm = document.createElement('form');
-    contactForm.classList.add('max-w-lg', 'mx-auto');
+    contactForm.classList.add('max-w-lg', 'mx-auto', 'text-center'); // Added 'text-center' class
 
     // First Name field
     const firstNameInput = document.createElement('input');
@@ -45,7 +45,6 @@ export class ContactSection {
 
     // Label for gender field
     const genderLabel = document.createElement('label');
-    genderLabel.textContent = 'Gender';
     genderLabel.classList.add('block', 'text-sm', 'font-semibold', 'mb-1');
 
     // Append form fields to form

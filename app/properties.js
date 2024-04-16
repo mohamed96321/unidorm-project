@@ -3,7 +3,7 @@ export class FeaturedProperties {
 
   render() {
     const propertiesSection = document.createElement('section');
-    propertiesSection.classList.add('py8');
+    propertiesSection.classList.add('py-4');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto', 'flex', 'justify-center'); 

@@ -3,7 +3,7 @@ export class HomeSection {
 
   render() {
     const homeSection = document.createElement('section');
-    homeSection.classList.add('py-16');
+    homeSection.classList.add('py-10');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');

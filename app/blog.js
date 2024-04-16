@@ -3,7 +3,7 @@ export class BlogSection {
 
   render() {
     const blogSection = document.createElement('section');
-    blogSection.classList.add('py-16');
+    blogSection.classList.add('py-8', 'px-12');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');
