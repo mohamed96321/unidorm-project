@@ -1,9 +1,9 @@
-import { Header } from './header.js';
-import { HomeSection } from './home.js';
-import { FeaturedProperties } from './properties.js';
-import { BlogSection } from './blog.js';
-import { ContactSection } from './contact.js';
-import { Footer } from './footer.js';
+import { Header } from './src/Header.js';
+import { HomeSection } from './src/Home.js';
+import { FeaturedProperties } from './src/Properties.js';
+import { BlogSection } from './src/Blog.js';
+import { ContactSection } from './src/Contact.js';
+import { Footer } from './src/Footer.js';
 
 const app = document.getElementById('app');
 

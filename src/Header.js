@@ -22,16 +22,14 @@ export class Header {
 
       <!-- Hamburger Icon for Medium and Small Screens -->
       <div class="md:hidden">
-        <button id="menu-toggle" class="block text-black hover:text-gray-600 focus:text-white focus:outline-none">
-          <svg class="h-6 w-6 fill-current text-black hover:text-gray-600" viewBox="0 0 24 24">
-            <path class="menu-icon" fill-rule="evenodd" clip-rule="evenodd" d="M4 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
-            <path class="close-icon hidden" fill-rule="evenodd" clip-rule="evenodd" d="M6.707 6.293a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414L6.707 7.707a1 1 0 0 1 0-1.414zM12 11.657L6.343 17.314a1 1 0 1 1-1.414-1.414L10.586 10 4.929 4.343a1 1 0 1 1 1.414-1.414L12 8.828l5.657-5.657a1 1 0 0 1 1.414 1.414L13.414 10l5.657 5.657a1 1 0 1 1-1.414 1.414L12 11.657z"/>
-          </svg>
+        <button id="menu-toggle" class="block text-black hover:text-gray-600 focus:outline-none">
+          <i class="bx bx-menu text-3xl"></i>
+          <i class="bx bx-x text-3xl hidden"></i>
         </button>
       </div>
       
       <!-- Links -->
-      <nav id="links-container" class="hidden md:flex space-x-4">
+      <nav id="links-container" class="hidden md:flex flex-col md:flex-row md:space-x-4 md:space-y-0 transition-all duration-300">
         <a href="#" class="hover:text-blue-300">Home</a>
         <a href="#" class="hover:text-blue-300">Properties</a>
         <a href="#" class="hover:text-blue-300">Blog</a>
@@ -45,8 +43,16 @@ export class Header {
     const homeLink = container.querySelector('#links-container a:first-child');
     menuToggle.addEventListener('click', () => {
       linksContainer.classList.toggle('hidden');
-      menuToggle.querySelector('.menu-icon').classList.toggle('hidden');
-      menuToggle.querySelector('.close-icon').classList.toggle('hidden');
+      linksContainer.classList.toggle('flex');
+      menuToggle.querySelector('.bx-menu').classList.toggle('hidden');
+      menuToggle.querySelector('.bx-x').classList.toggle('hidden');
+
+      // Add animation
+      if (!linksContainer.classList.contains('hidden')) {
+        linksContainer.classList.add('animate-slideIn');
+      } else {
+        linksContainer.classList.remove('animate-slideIn');
+      }
     });
 
     // Add active styles to home link
@@ -61,3 +67,34 @@ export class Header {
     return this.element;
   }
 }
+
+// Define the animation keyframes
+const slideInKeyframes = [
+  { transform: 'translateY(-100%)' },
+  { transform: 'translateY(0)' }
+];
+
+// Define the animation options
+const slideInOptions = {
+  duration: 500,
+  easing: 'cubic-bezier(0.77, 0, 0.175, 1)', // Smooth easing
+  fill: 'both'
+};
+
+// Add animation to the CSS
+const styles = document.createElement('style');
+styles.innerHTML = `
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideIn {
+    animation: slideIn 500ms cubic-bezier(0.77, 0, 0.175, 1) both;
+  }
+`;
+document.head.appendChild(styles);
