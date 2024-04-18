@@ -1,4 +1,4 @@
-import { Footer } from './src/footer.js';
+import { Footer } from './src/Footer.js';
 import { Header } from './src/Header.js';
 import { HomeSection } from './src/Home.js';
 import { FeaturedProperties } from './src/Properties.js';
