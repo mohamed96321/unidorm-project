@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import { Footer } from './src/Footer.js';
->>>>>>> 3d0fc10bd6338f5bee5fe1436ccd70c54202c25a
 import { Header } from './src/Header.js';
 import { Footer } from './src/Footer.js';
 import { HomeSection } from './src/Home.js';
