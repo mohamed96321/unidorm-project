@@ -3,7 +3,7 @@ export class ContactSection {
 
   render() {
     const contactSection = document.createElement('section');
-    contactSection.classList.add('py-12');
+    contactSection.classList.add('py-12', 'px-4');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');

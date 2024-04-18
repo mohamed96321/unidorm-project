@@ -42,30 +42,38 @@ export class Footer {
 
     // Social media section
     const socialMediaSection = document.createElement('div');
-socialMediaSection.classList.add('mb-8', 'md:mb-0');
-socialMediaSection.innerHTML = `
-  <div class="flex flex-wrap">
-    <div class="mr-8">
-      <h4 class="mb-2">Follow Us</h4> <!-- Style the title -->
-      <div class="flex space-x-4"> <!-- Style the social media icons -->
-        <a href="#" class="text-gray-400 hover:text-blue-500">
-          <i class="bx bxl-facebook text-2xl"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-blue-500">
-          <i class="bx bxl-twitter text-2xl"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-blue-500">
-          <i class="bx bxl-instagram text-2xl"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-blue-500">
-          <i class="bx bxl-linkedin text-2xl"></i>
-        </a>
+    socialMediaSection.classList.add('mb-8', 'md:mb-0');
+    socialMediaSection.innerHTML = `
+      <div class="flex flex-wrap">
+        <div class="mr-8">
+          <h4 class="mb-2">Follow Us</h4> <!-- Style the title -->
+          <div class="flex space-x-4"> <!-- Style the social media icons -->
+            <a href="#" class="text-gray-400 hover:text-blue-500">
+              <i class="bx bxl-facebook text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-500">
+              <i class="bx bxl-twitter text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-500">
+              <i class="bx bxl-instagram text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-500">
+              <i class="bx bxl-linkedin text-2xl"></i>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-`;
-container.appendChild(socialMediaSection);
+    `;
+    container.appendChild(socialMediaSection);
 
+    // Add copyright text and hr element
+    const copyrightSection = document.createElement('div');
+    copyrightSection.classList.add('w-full', 'text-center', 'lg:mt-4');
+    copyrightSection.innerHTML = `
+      <hr class="my-6 border-t-1 border-gray-400">
+      <p class="text-sm text-gray-600">&copy; ${new Date().getFullYear()} UniDorm. All Rights Reserved.</p>
+    `;
+    container.appendChild(copyrightSection);
 
     // Append container to footer element
     this.element.appendChild(container);
@@ -74,7 +82,7 @@ container.appendChild(socialMediaSection);
   createLinkGroup(title, links) {
     const linkGroup = `
       <div class="mr-8">
-        <h4 class="mb-2">${title}</h4>
+        <h4 class="mb-2 md:mt-2">${title}</h4>
         <ul class="space-y-2">
           ${links.map(link => `<li><a href="#" class="text-gray-400 hover:text-blue-500">${link}</a></li>`).join('')}
         </ul>
