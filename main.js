@@ -1,5 +1,5 @@
-import { Footer } from './src/footer.js';
 import { Header } from './src/Header.js';
+import { Footer } from './src/Footer.js';
 import { HomeSection } from './src/Home.js';
 import { FeaturedProperties } from './src/Properties.js';
 import { BlogSection } from './src/Blog.js';
