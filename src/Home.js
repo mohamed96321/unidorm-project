@@ -3,7 +3,7 @@ export class HomeSection {
 
   render() {
     const homeSection = document.createElement('section');
-    homeSection.classList.add('py-10');
+    homeSection.classList.add('py-10', 'px-8');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');

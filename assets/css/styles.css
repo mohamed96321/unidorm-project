@@ -15,3 +15,20 @@ body {
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .text-buttons {
+    display: none;
+  }
+  .icon-buttons {
+    display: inline-block;
+  }
+}
+@media (min-width: 769px) {
+  .icon-buttons {
+    display: none;
+  }
+  .text-buttons {
+    display: inline-block;
+  }
+}

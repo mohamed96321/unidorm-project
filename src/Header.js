@@ -6,7 +6,7 @@ export class Header {
 
     // Create header content
     const container = document.createElement('div');
-    container.classList.add('container', 'mx-auto', 'flex', 'justify-between', 'items-center');
+    container.classList.add('container', 'mx-auto', 'flex', 'justify-between', 'items-center', 'relative');
     container.innerHTML = `
       <!-- Logo -->
       <div class="flex items-center">
@@ -15,10 +15,22 @@ export class Header {
       </div>
 
       <!-- Buttons -->
-      <div class="flex space-x-4">
-        <button class="bg-orange-400 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded">List of Properties</button>
-        <button class="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">Sign In</button>
-      </div>
+        <div class="flex space-x-4">
+          <button class="bg-orange-400 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded text-buttons">
+            List of Properties
+          </button>
+          <button id="loginBtn" class="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded text-buttons">
+            Sign In
+          </button>
+          <button class="text-black font-bold py-2 hover:text-gray-600 icon-buttons">
+            <i class="bx bx-list-ul text-3xl"></i>
+            <div class="absolute text-sm px-2 py-1 rounded w-20 text-center hidden">List of Properties</div>
+          </button>
+          <button id="loginIcon" class="text-black font-bold py-2 hover:text-gray-600 icon-buttons relative">
+            <i class="bx bx-log-in text-2xl"></i>
+            <div id="loginLabel" class="absolute text-sm px-2 py-1 rounded w-20 text-center hidden">Sign In</div>
+          </button>
+        </div>
 
       <!-- Links -->
       <div id="desktop-links" class="hidden md:flex space-x-4"></div>
@@ -46,6 +58,30 @@ export class Header {
     const linksContainer = container.querySelector('#links-container');
     const desktopLinks = container.querySelector('#desktop-links');
     const mobileLinks = container.querySelector('#mobile-links');
+    const loginIcon = container.querySelector('#loginIcon');
+    const loginLabel = container.querySelector('#loginLabel');
+    const listIcon = container.querySelector('.bx-list-ul');
+    const listLabel = container.querySelector('.bx-list-ul + div');
+
+    // Show login label on hover
+    loginIcon.addEventListener('mouseenter', () => {
+      loginLabel.classList.remove('hidden');
+    });
+
+    // Hide login label on mouseout
+    loginIcon.addEventListener('mouseleave', () => {
+      loginLabel.classList.add('hidden');
+    });
+
+    // Show list label on hover
+    listIcon.addEventListener('mouseenter', () => {
+      listLabel.classList.remove('hidden');
+    });
+
+    // Hide list label on mouseout
+    listIcon.addEventListener('mouseleave', () => {
+      listLabel.classList.add('hidden');
+    });
 
     // Data for links
     const linksData = [
