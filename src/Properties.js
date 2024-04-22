@@ -3,7 +3,7 @@ export class FeaturedProperties {
 
   render() {
     const propertiesSection = document.createElement('section');
-    propertiesSection.classList.add('py-4');
+    propertiesSection.classList.add('bg-white', 'dark:bg-gray-800', 'text-black','dark:text-white','py-4');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto', 'flex', 'justify-center'); 
@@ -28,7 +28,7 @@ export class FeaturedProperties {
         link: '#'
       },
       {
-        imageUrl: './assets/img/table1.jpg',
+        imageUrl: './assets/img/table3.jpeg',
         title: 'Property 3',
         description: 'Description of Property 3',
         price: '$700,000',
@@ -39,6 +39,20 @@ export class FeaturedProperties {
         title: 'Property 4',
         description: 'Description of Property 4',
         price: '$800,000',
+        link: '#'
+      },
+      {
+        imageUrl: './assets/img/table2.jpg',
+        title: 'Property 2',
+        description: 'Description of Property 2',
+        price: '$600,000',
+        link: '#'
+      },
+      {
+        imageUrl: './assets/img/table4.jpeg',
+        title: 'Property 3',
+        description: 'Description of Property 3',
+        price: '$700,000',
         link: '#'
       },
     ];
@@ -56,7 +70,7 @@ export class FeaturedProperties {
 
   createPropertyCard(property) {
     const card = document.createElement('div');
-    card.classList.add('max-w-xs', 'rounded', 'overflow-hidden', 'shadow-lg', 'm-4', 'transition', 'transform', 'hover:scale-105', 'bg-white', 'flex', 'flex-col', 'items-center');
+    card.classList.add('dark:bg-gray-800', 'max-w-xs', 'rounded', 'overflow-hidden', 'shadow-lg', 'm-4', 'transition', 'hover:scale-105', 'bg-white', 'flex', 'flex-col', 'items-center');
 
     const image = document.createElement('img');
     image.classList.add('w-full', 'h-64', 'object-cover');
@@ -71,16 +85,16 @@ export class FeaturedProperties {
     title.textContent = property.title;
 
     const description = document.createElement('p');
-    description.classList.add('text-gray-700', 'text-base', 'mb-2');
+    description.classList.add('dark:text-gray-200', 'text-gray-700', 'text-base', 'mb-2');
     description.textContent = property.description;
 
     const price = document.createElement('p');
-    price.classList.add('text-gray-900', 'font-bold', 'text-xl', 'mb-2');
+    price.classList.add('dark:text-white', 'text-gray-900', 'font-bold', 'text-xl', 'mb-2');
     price.textContent = property.price;
 
     const link = document.createElement('a');
     link.href = property.link;
-    link.classList.add('text-blue-500', 'text-sm', 'font-bold', 'hover:text-blue-700', 'mt-auto');
+    link.classList.add('text-blue-500', 'text-sm', 'font-medium', 'hover:underline', 'mt-auto');
     link.textContent = 'View Property';
 
     cardBody.appendChild(title);

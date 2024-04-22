@@ -3,7 +3,7 @@ export class ContactSection {
 
   render() {
     const contactSection = document.createElement('section');
-    contactSection.classList.add('py-12', 'px-4');
+    contactSection.classList.add('bg-white', 'dark:bg-gray-800', 'text-black','dark:text-white', 'pt-4', 'py-12', 'px-4');
 
     const container = document.createElement('div');
     container.classList.add('container', 'mx-auto');
@@ -18,24 +18,24 @@ export class ContactSection {
     // First Name field
     const firstNameInput = document.createElement('input');
     firstNameInput.type = 'text';
-    firstNameInput.classList.add('block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
+    firstNameInput.classList.add('bg-white', 'dark:bg-gray-800','block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
     firstNameInput.placeholder = 'First Name';
 
     // Last Name field
     const lastNameInput = document.createElement('input');
     lastNameInput.type = 'text';
-    lastNameInput.classList.add('block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
+    lastNameInput.classList.add('bg-white', 'dark:bg-gray-800', 'block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
     lastNameInput.placeholder = 'Last Name';
 
     // Email field
     const emailInput = document.createElement('input');
     emailInput.type = 'email';
-    emailInput.classList.add('block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
+    emailInput.classList.add('bg-white', 'dark:bg-gray-800', 'block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
     emailInput.placeholder = 'Email';
 
     // Gender field
     const genderSelect = document.createElement('select');
-    genderSelect.classList.add('block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
+    genderSelect.classList.add('bg-white', 'dark:bg-gray-800', 'block', 'w-full', 'border', 'rounded-md', 'py-2', 'px-3', 'mb-4');
     genderSelect.innerHTML = `
       <option value="" disabled selected>Choose Gender</option>
       <option value="male">Male</option>

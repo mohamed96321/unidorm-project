@@ -1,6 +1,5 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f8f9fa;
 }
 
 *,
@@ -31,4 +30,42 @@ body {
   .text-buttons {
     display: inline-block;
   }
+}
+
+.text_orange_400 {
+  color: #ff9900;
+}
+
+.bg_orange_400 {
+  background-color: #ff9900;
+}
+
+.bg_orange_400:hover {
+  background-color: #ffcc66;
+}
+
+.text_orange_300 {
+  color: #ffcc66;
+}
+
+/* Add this CSS to your stylesheet */
+.profile-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-presence-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #3bb143; /* Green color for presence indicator */
+  border: 2px solid #ffffff; /* White border around the presence indicator */
+  border-radius: 50%;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
 }
