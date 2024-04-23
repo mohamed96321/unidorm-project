@@ -263,25 +263,31 @@ export class Header {
         // Update the content of the span element
         spanElement.textContent = initials;
       };
-    
+
       profileDiv.innerHTML = `
-        <div class="flex items-center">
-          <div class="relative">
-            <img src="./assets/img/table1.jpg" alt="Profile Image" class="h-8 w-8 rounded-full overflow-hidden">
-            <div class="absolute bottom-0 right-0 bg-green-500 h-3 w-3 rounded-full border-2 border-white"></div>
-          </div>
-          <span class="text-sm font-medium ml-1"></span>
-          <button id="profileDropdownBtn" type="button">
-            <i class="bx bx-chevron-down text-2xl"></i>
+      <div class="flex items-center">
+        <div class="relative">
+          <img src="./assets/img/table1.jpg" alt="Profile Image" class="h-8 w-8 rounded-full overflow-hidden">
+          <div class="absolute bottom-0 right-0 bg-green-500 h-3 w-3 rounded-full border-2 border-white"></div>
+        </div>
+        <span class="text-sm font-medium ml-1"></span>
+        <button id="profileDropdownBtn" type="button">
+          <i class="bx bx-chevron-down text-2xl"></i>
+        </button>
+      </div>
+      <div id="profileDropdown" class="hidden absolute top-12">
+        <div class="flex flex-col sm:w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
+          <button id="profileBtn" class="flex items-center px-4 py-2 text-sm dark:text-white text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-700" type="button">
+            <i class="bx bx-user-circle text-xl mr-2"></i>
+            <span>Profile</span>
+          </button>
+          <button id="signOutBtn" class="flex items-center px-4 py-2 text-sm dark:text-white text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-700" type="button">
+            <i class="bx bx-log-out text-xl mr-2"></i>
+            <span>Log out</span>
           </button>
         </div>
-        <div id="profileDropdown" class="hidden absolute top-12 w-30 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
-          <div>
-            <button id="profileBtn" class="block px-4 py-1 text-sm dark:text-white text-gray-700 w-full text-left" type="button">Profile</button>
-            <button id="signOutBtn" class="block px-4 py-1 text-sm dark:text-white text-gray-700 w-full text-left" type="button">Sign Out</button>
-          </div>
-        </div>
-      `;
+      </div>
+    `;    
     
       const spanElement = profileDiv.querySelector('span');
       updateProfileDisplay(); // Initial update of the profile display
