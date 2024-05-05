@@ -1,18 +1,17 @@
-import { Profile } from './Profile.js';
+import { Profile } from '../pages/Profile.js';
+import { Auth } from '../pages/Auth.js';
 
 export class Header {
   constructor() {
     // Create header element
     this.element = document.createElement('header');
     this.element.classList.add(
-      'fixed',
       'bg-white',
       'dark:bg-gray-800',
       'text-black',
       'dark:text-white',
       'py-6',
-      'px-6',
-      'w-full'
+      'px-6'
     );
 
     // Create header content
@@ -28,7 +27,7 @@ export class Header {
     container.innerHTML = `
       <!-- Logo -->
       <div class="flex items-center">
-        <img src="./assets/img/logo.png" alt="UniDorm Logo" class="h-8 mr-2">
+        <img src="https://icons.veryicon.com/png/o/miscellaneous/color-icon-is-not-embellished/blue-house-1.png" alt="UniDorm Logo" class="h-8 mr-2">
         <span class="text-xl font-bold">Uni<span class="text_orange_400">Dorm</span></span>
       </div>
 
@@ -86,6 +85,12 @@ export class Header {
         scrollToTopBtn.classList.remove('hidden');
       } else {
         scrollToTopBtn.classList.add('hidden');
+      }
+
+      if (window.scrollY > 0) {
+        this.element.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'z-50', 'shadow-md');
+      } else {
+        this.element.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'z-50', 'shadow-md');
       }
     });
 
@@ -158,12 +163,12 @@ export class Header {
       listLabel.classList.add('hidden');
     });
 
-    // Data for links
+    // Data for links Buy
     const linksData = [
       { text: 'Home', href: '#' },
-      { text: 'Properties', href: '#' },
-      { text: 'Blog', href: '#' },
-      { text: 'Contact', href: '#' },
+      { text: 'Rent', href: '#' },
+      { text: 'New Projects', href: '#' },
+      { text: 'Find Agent', href: '#' },
     ];
 
     // Function to create links
@@ -207,9 +212,23 @@ export class Header {
       linksContainer.classList.remove('translate-x-0');
     });
 
-    // Add event listeners for sign-in button and login icon
-    signInButton.addEventListener('click', toggleSignIn);
-    loginIcon.addEventListener('click', toggleSignIn);
+    // Function to navigate to the Auth page
+    const navigateToAuth = () => {
+      // Assuming you have a function to render the Auth page
+      const app = document.getElementById('app');
+      app.innerHTML = ''; // Clear previous content
+      const authPage = new Auth();
+      app.appendChild(authPage.render());
+    };
+
+    // Add event listener to the sign in button
+    signInButton.addEventListener('click', () => {
+      navigateToAuth();
+    });
+
+    loginIcon.addEventListener('click', () => {
+      navigateToAuth();
+    });
 
     // Function to toggle sign-in/sign-out state
     function toggleSignIn() {
@@ -249,13 +268,18 @@ export class Header {
       profileDiv.classList.add('flex', 'items-center', 'space-x-2');
       profileDiv.id = 'profile';
     
-      // Get the name
-      const name = "Mohamed";
+        
+      // Retrieve stored user data from localStorage
+      const storedData = JSON.parse(localStorage.getItem('userData'));
+
+      // Extract email and password from stored data
+      const storedLastname = storedData['signup-lastname'];
+      const name = storedLastname;
     
       // Function to update the profile display based on the screen size
       const updateProfileDisplay = () => {
         // Check if the screen size is 450px or less
-        const isSmallScreen = window.innerWidth <= 400;
+        const isSmallScreen = window.innerWidth <= 470;
     
         // Set the content of the span element accordingly
         const initials = isSmallScreen ? name.charAt(0) : name;
@@ -267,7 +291,7 @@ export class Header {
       profileDiv.innerHTML = `
       <div class="flex items-center">
         <div class="relative">
-          <img src="./assets/img/table1.jpg" alt="Profile Image" class="h-8 w-8 rounded-full overflow-hidden">
+          <img src="https://c4.wallpaperflare.com/wallpaper/529/555/624/mask-neon-person-photography-wallpaper-thumb.jpg" alt="Profile Image" class="h-8 w-8 rounded-full overflow-hidden">
           <div class="absolute bottom-0 right-0 bg-green-500 h-3 w-3 rounded-full border-2 border-white"></div>
         </div>
         <span class="text-sm font-medium ml-1"></span>
@@ -288,7 +312,7 @@ export class Header {
         </div>
       </div>
     `;    
-    
+
       const spanElement = profileDiv.querySelector('span');
       updateProfileDisplay(); // Initial update of the profile display
     
@@ -311,7 +335,6 @@ export class Header {
         renderProfilePage();
       });
 
-      // Assuming you have a function to render the profile page
       function renderProfilePage() {
         const app = document.getElementById('app');
         app.innerHTML = ''; // Clear previous content

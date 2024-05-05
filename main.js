@@ -1,9 +1,4 @@
-import { Footer } from './src/Footer.js';
-import { Header } from './src/Header.js';
-import { HomeSection } from './src/Home.js';
-import { FeaturedProperties } from './src/Properties.js';
-import { BlogSection } from './src/Blog.js';
-import { ContactSection } from './src/Contact.js';
+import { App } from './src/App.js';
 
 const app = document.getElementById('app');
 
@@ -12,20 +7,10 @@ const hasVisitedBefore = document.cookie.includes('visited=true');
 const hasAcceptedCookies = document.cookie.includes('acceptedCookies=true');
 
 // Initialize components
-const header = new Header();
-const heroSection = new HomeSection();
-const featuredProperties = new FeaturedProperties();
-const blogSection = new BlogSection();
-const contactSection = new ContactSection();
-const footer = new Footer();
+const renderApp = new App();
 
 // Render components
-app.appendChild(header.render());
-app.appendChild(heroSection.render());
-app.appendChild(featuredProperties.render());
-app.appendChild(blogSection.render());
-app.appendChild(contactSection.render());
-app.appendChild(footer.render());
+app.appendChild(renderApp.render());
 
 // Set a cookie if the user is visiting for the first time
 if (!hasVisitedBefore) {
