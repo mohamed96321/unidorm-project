@@ -14,7 +14,7 @@ export class Footer {
     logoSubscribeSection.innerHTML = `
       <div class="flex items-center mb-4">
         <img src="https://icons.veryicon.com/png/o/miscellaneous/color-icon-is-not-embellished/blue-house-1.png" alt="UniDorm Logo" class="h-8 mr-2">
-        <span class="text-xl font-bold">Uni<span class="text_orange_400">Dorm</span></span>
+        <span class="text-xl font-bold">Uni<span class="text-yellow-500">Dorm</span></span>
       </div>
       <div class="flex items-center">
         <div class="relative flex-grow">

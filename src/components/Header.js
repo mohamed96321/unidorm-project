@@ -1,5 +1,9 @@
 import { Profile } from '../pages/Profile.js';
 import { Auth } from '../pages/Auth.js';
+import { HomeSection } from '../pages/Home.js';
+import { Rent } from '../pages/Rent.js';
+import { NewProjects } from '../pages/NewProjects.js';
+import { FindAgent } from '../pages/FindAgent.js';
 
 export class Header {
   constructor() {
@@ -28,12 +32,12 @@ export class Header {
       <!-- Logo -->
       <div class="flex items-center">
         <img src="https://icons.veryicon.com/png/o/miscellaneous/color-icon-is-not-embellished/blue-house-1.png" alt="UniDorm Logo" class="h-8 mr-2">
-        <span class="text-xl font-bold">Uni<span class="text_orange_400">Dorm</span></span>
+        <span class="text-xl font-bold">Uni<span class="text-yellow-500">Dorm</span></span>
       </div>
 
       <!-- Buttons -->
       <div class="flex space-x-4">
-        <button class="bg_orange_400 text-white font-bold py-2 px-4 rounded text-buttons">
+        <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded text-buttons">
           List of Properties
         </button>
         <button id="loginBtn" class="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded text-buttons">
@@ -68,12 +72,12 @@ export class Header {
       </nav>
 
       <!-- Scroll to top button -->
-      <button id="scrollToTopBtn" class="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer hidden">
+      <button id="scrollToTopBtn" class="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-500 text-white px-2 rounded cursor-pointer hidden">
         <i class="bx bx-chevrons-up text-2xl"></i>
       </button>
 
       <!-- Dark/Light mode toggle -->
-      <button id="theme-toggle" class="fixed bottom-14 right-4 bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">
+      <button id="theme-toggle" class="fixed bottom-14 right-4 bg-blue-600 hover:bg-blue-500 text-white px-2 rounded cursor-pointer">
         <i id="darkModeIcon" class="bx bx-moon text-2xl"></i>
       </button>
     `;
@@ -163,25 +167,59 @@ export class Header {
       listLabel.classList.add('hidden');
     });
 
-    // Data for links Buy
     const linksData = [
       { text: 'Home', href: '#' },
       { text: 'Rent', href: '#' },
       { text: 'New Projects', href: '#' },
       { text: 'Find Agent', href: '#' },
     ];
-
-    // Function to create links
+    
     const createLinks = (container, links) => {
+      let activeLink = localStorage.getItem('activeLink'); // Get the active link from localStorage
+    
+      // If activeLink is null or empty, set it to "Home"
+      if (!activeLink) {
+        activeLink = 'Home';
+        localStorage.setItem('activeLink', activeLink);
+      }
+    
       links.forEach((link) => {
         const anchor = document.createElement('a');
         anchor.href = link.href;
         anchor.textContent = link.text;
-        anchor.classList.add('hover:text-blue-700');
-
-        // Check if it's the "Home" link
-        if (link.text === 'Home') {
-          anchor.classList.add('text-blue-700', 'relative', 'font-bold');
+        anchor.classList.add('hover:text-blue-500', 'header-link'); // Add 'header-link' class
+    
+        // Check if it's the active link
+        if (link.text === activeLink) {
+          anchor.classList.add('text-blue-600', 'relative', 'font-bold', 'active'); // Add 'active' class
+          const underline = document.createElement('div');
+          underline.classList.add(
+            'absolute',
+            'top-6',
+            'left-0',
+            'w-full',
+            'h-1',
+            'bg-yellow-500'
+          );
+          anchor.appendChild(underline);
+        }
+    
+        // Add click event listener
+        anchor.addEventListener('click', (event) => {
+          event.preventDefault(); // Prevent default behavior
+          navigateToPage(link.text); // Navigate to the corresponding page
+          setActiveLink(anchor); // Set the clicked link as active
+          localStorage.setItem('activeLink', link.text); // Store the active link in localStorage
+        });
+    
+        container.appendChild(anchor);
+      });
+    
+      // If activeLink is still null or empty, set the "Home" link as active visually
+      if (!activeLink) {
+        const homeLink = container.querySelector('a[href="#"]');
+        if (homeLink) {
+          homeLink.classList.add('text-blue-600', 'relative', 'active');
           const underline = document.createElement('div');
           underline.classList.add(
             'absolute',
@@ -190,15 +228,53 @@ export class Header {
             'w-full',
             'h-1',
             'rounded-full',
-            'bg_orange_400'
+            'bg-yellow-500'
           );
-          anchor.appendChild(underline);
+          homeLink.appendChild(underline);
         }
-
-        container.appendChild(anchor);
-      });
+      }
     };
-
+    
+    // Function to navigate to the corresponding page
+    const navigateToPage = (pageName) => {
+      const app = document.getElementById('app');
+      app.innerHTML = ''; 
+      
+      let pageComponent;
+      switch (pageName) {
+        case 'Home':
+          pageComponent = new HomeSection();
+          break;
+        case 'Rent':
+          pageComponent = new Rent();
+          break;
+        case 'New Projects':
+          pageComponent = new NewProjects();
+          break;
+        case 'Find Agent':
+          pageComponent = new FindAgent();
+          break;
+        default:
+          break;
+      }
+      
+      if (pageComponent) {
+        app.appendChild(pageComponent.render());
+      }
+    };
+    
+    // Function to set the clicked link as active
+    const setActiveLink = (clickedLink) => {
+      // Remove active class from all links
+      const allLinks = document.querySelectorAll('.header-link');
+      allLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+    
+      // Add active class to the clicked link
+      clickedLink.classList.add('active');
+    };
+    
     createLinks(desktopLinks, linksData);
     createLinks(mobileLinks, linksData);
 

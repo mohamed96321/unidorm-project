@@ -114,17 +114,27 @@ export class FeaturedProperties {
     link.classList.add('text-blue-500', 'text-sm', 'font-medium', 'hover:underline', 'mt-auto');
     link.textContent = 'View Property';
   
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('flex', 'justify-between', 'mt-2');
+  
     const buyButton = document.createElement('button');
-    buyButton.classList.add('bg-blue-500', 'text-white', 'font-semibold', 'py-2', 'rounded-md', 'w-full', 'mt-4');
+    buyButton.classList.add('bg-blue-600', 'hover:bg-blue-500', 'text-white', 'font-semibold', 'py-2', 'rounded-md', 'w-1/2');
     buyButton.textContent = 'Buy Now';
   
+    const addToListButton = document.createElement('button');
+    addToListButton.classList.add('bg-yellow-500', 'text-white', 'font-semibold', 'py-2', 'rounded-md', 'w-1/2', 'ml-2', 'hover:bg-yellow-400');
+    addToListButton.textContent = 'Add to List';
+  
     // Append all elements to the card
+    buttonContainer.appendChild(buyButton);
+    buttonContainer.appendChild(addToListButton);
+  
     cardBody.appendChild(title);
     cardBody.appendChild(description);
     cardBody.appendChild(price);
     cardBody.appendChild(address);
     cardBody.appendChild(link);
-    cardBody.appendChild(buyButton);
+    cardBody.appendChild(buttonContainer);
   
     card.appendChild(image);
     card.appendChild(cardBody);

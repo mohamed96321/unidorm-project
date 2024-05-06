@@ -56,7 +56,7 @@ export class ContactSection {
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mt-4');
+    submitButton.classList.add('bg-blue-600', 'hover:bg-blue-500', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mt-4');
     submitButton.textContent = 'Submit';
 
     contactForm.appendChild(submitButton);

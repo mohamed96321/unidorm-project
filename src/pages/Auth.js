@@ -149,8 +149,13 @@ export class Auth {
             input.previousElementSibling.classList.remove('text-md', '-translate-y-6', 'text-white');
         }
       };
+
+      const handleBlur = (fieldName) => {
+        handleInput();
+      };
   
-      input.addEventListener('input', handleInput);
+      input.addEventListener('input', handleInput);      
+      input.addEventListener('blur', handleBlur);
       input.addEventListener('focus', handleFocus);
       input.addEventListener('blur', handleBlurAnimation);
     });
