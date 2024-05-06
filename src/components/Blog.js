@@ -27,7 +27,7 @@ export class BlogSection {
 
     blogPosts.forEach(post => {
       const postCard = document.createElement('div');
-      postCard.classList.add('bg-white', 'dark:bg-gray-800', 'p-2', 'rounded', 'overflow-hidden', 'shadow-md', 'transform', 'transition', 'duration-500', 'hover:scale-105');
+      postCard.classList.add('bg-white', 'dark:bg-gray-800', 'p-2', 'rounded', 'overflow-hidden', 'shadow-md', 'transform', 'transition', 'duration-500', 'hover:scale-105', 'flex', 'flex-col', 'flex-grow');
 
       const postImage = document.createElement('img');
       postImage.src = post.image;
@@ -40,7 +40,7 @@ export class BlogSection {
 
       const postLink = document.createElement('a');
       postLink.href = post.link;
-      postLink.classList.add('text-blue-500', 'hover:underline', 'font-medium');
+      postLink.classList.add('text-blue-500', 'hover:underline', 'font-medium', 'mt-auto');
       postLink.textContent = 'Read more';
 
       postCard.appendChild(postImage);
